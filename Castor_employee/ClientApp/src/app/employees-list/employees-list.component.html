@@ -1,0 +1,31 @@
+<h2 class="title-container">Listado de empleados</h2>
+<table class="employee-table">
+  <thead>
+    <tr>
+
+      <th>Cedula</th>
+      <th>Nombre</th>
+      <th>Foto</th>
+      <th>Fecha Ingreso</th>
+      <th>Cargo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+
+      <td>{{ employee.cedula }}</td>
+      <td>{{ employee.nombre }}</td>
+      <td><img [src]="employee.fotoPath" width="100" height="100"></td>
+      <td>{{ employee.fechaIngreso | date }}</td>
+      <td>{{ getCargoName(employee.idCargo) }}</td>
+      <td>
+        <button (click)="editEmployee(employee.id)" class="btn btn-outline-primary">Editar</button>
+        <p></p>
+        <button (click)="deleteEmployee(employee.id)" class="btn btn-outline-danger">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p></p>
+<button (click)="goToAddEmployee()" class="btn btn-primary">Añadir Nuevo Empleado</button>
